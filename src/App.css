@@ -54,6 +54,10 @@ background: #10141f;
 .token{
   font-size: 14px;
 }
+.purple{
+  color: rgb(33, 229, 111);
+  font-weight: bold;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

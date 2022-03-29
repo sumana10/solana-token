@@ -16,7 +16,7 @@ export const generate = async () => {
     const toWallet = new PublicKey("Bv53xJMPq6e5PV7m2NBvtHCVS2YNYkZmLmVvsUMNJu3T");
     
     // Create new token mint
-    const mint = await createMint(connection, fromWallet, fromWallet.publicKey, null, 9);
+    const mint = await createMint(connection, fromWallet, fromWallet.publicKey, null, 4);
 
     // Get the token account of the fromWallet address, and if it does not exist, create it
     const fromTokenAccount = await getOrCreateAssociatedTokenAccount(
@@ -55,6 +55,7 @@ export const generate = async () => {
     );
     console.log('transfer tx:', signature);
     const creatorTokenAddressString = mint.toString();
+    // let creatorTokenBalance = await connection.getBalance(toTokenAccount.address);
 
-    return creatorTokenAddressString
+    return {creatorTokenAddressString}
 };
