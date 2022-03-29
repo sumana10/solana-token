@@ -16,12 +16,17 @@ module.exports = function (config, env) {
         },
         plugins: [
             ...config.plugins,
+            
             new ProvidePlugin({
                 process: 'process/browser',
+            }),
+            new ProvidePlugin({
+                Buffer: ['buffer', 'Buffer'],
             }),
         ],
         resolve: {
             ...config.resolve,
+            
             fallback: {
                 assert: require.resolve('assert'),
                 buffer: require.resolve('buffer'),

@@ -22,7 +22,7 @@ background: linear-gradient(to right, #49a09d, #5f2c82); /* W3C, IE 10+/ Edge, F
 background: #10141f;
   min-height: 100vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   /* flex-wrap: nowrap; */
   align-items: center;
   justify-content: center;
@@ -36,7 +36,8 @@ background: #10141f;
 }
 .wallet-adapter-button{
   background-color: rgb(78, 68, 206) !important;
-  margin-right:10px;
+  /* margin-right:10px; */
+  margin-bottom: 20px;
 }
 .sendbtn{
   
@@ -47,8 +48,11 @@ background: #10141f;
   text-align: center;
   font-size: 20px;
   /* margin: 50px auto; */
-  margin-left: 5px;
-
+  /* margin-left: 5px; */
+  margin-bottom: 20px;
+}
+.token{
+  font-size: 14px;
 }
 @keyframes App-logo-spin {
   from {

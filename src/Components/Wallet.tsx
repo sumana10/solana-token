@@ -17,7 +17,7 @@ import {
 } from '@solana/wallet-adapter-react-ui';
 import { clusterApiUrl } from '@solana/web3.js';
 import { SendOneLamportToRandomAddress } from './Send';
-import { mintToken } from './mintToken';
+
 
 
 
@@ -56,7 +56,7 @@ export const Wallet: FC = () => {
                     { /* Your app's components go here, nested within the context providers. */ }
                     
                     <SendOneLamportToRandomAddress/>
-                    <button onClick={mintToken}>Mint</button>
+                    {/* <button onClick={mintToken}>Mint</button> */}
                 </WalletModalProvider>
             </WalletProvider>
         </ConnectionProvider>

@@ -5,30 +5,57 @@ import { clusterApiUrl, Connection, Keypair, LAMPORTS_PER_SOL } from '@solana/we
 
 const NewFungibleToken: FC = () =>{
 
-  const payer = Keypair.generate();
-  const mintAuthority = Keypair.generate();
-  const freezeAuthority = Keypair.generate();
-  
   const connection = new Connection(
     clusterApiUrl('devnet'),
     'confirmed'
   );
+
+  const myKeypair = Keypair.generate();
   
-  const onClick = useCallback(async () => {
-       
-    const mint = await createMint(
-      connection,
-      payer,
-      mintAuthority.publicKey,
-      freezeAuthority.publicKey,
-      9 // We are using 9 to match the CLI decimal default exactly
-    );
+  // const payer = Keypair.generate();
+  const mintAuthority = Keypair.generate();
+  const freezeAuthority = Keypair.generate();
+  
+  
+
+  async function minting(){
+
+    await connection.requestAirdrop(myKeypair.publicKey, 1000000000);
+
+    // const airdropSignature = await connection.requestAirdrop(
+    //   payer.publicKey,
+    //   LAMPORTS_PER_SOL,
+    // );
     
-    console.log(mint.toBase58());
-}, [connection]);
+    // await connection.confirmTransaction(airdropSignature);
+    
+  const mint = await createMint(
+    connection,
+    myKeypair,
+    myKeypair.publicKey,
+    freezeAuthority.publicKey,
+    9 // We are using 9 to match the CLI decimal default exactly,
+    
+  );
+  // console.log(mint.toBase58());
+  }
+  
+  
+//   const onClick = useCallback(async () => {
+       
+//     const mint = await createMint(
+//       connection,
+//       payer,
+//       mintAuthority.publicKey,
+//       freezeAuthority.publicKey,
+//       9 // We are using 9 to match the CLI decimal default exactly
+//     );
+    
+//     console.log(mint.toBase58());
+// }, [connection]);
 
   return (
-    <button onClick={onClick}>newFungibleToken</button>
+    <button onClick={minting} className='sendbtn'>newFungibleToken</button>
   )
 }
 export default NewFungibleToken
