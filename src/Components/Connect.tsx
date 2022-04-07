@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { PublicKey, Transaction } from "@solana/web3.js";
 
-import "./App.css";
+import "../App.css";
+
 
 type DisplayEncoding = "utf8" | "hex";
 type PhantomEvent = "disconnect" | "connect" | "accountChanged";
@@ -31,7 +32,7 @@ interface PhantomProvider {
   request: (method: PhantomRequestMethod, params: any) => Promise<unknown>;
 }
 
-function App() {
+function Connect() {
   const [provider, setProvider] = useState<PhantomProvider | undefined>(
     undefined
   );
@@ -60,7 +61,7 @@ function App() {
     if (solana) {
       try {
         const response = await solana.connect();
-        console.log("wallet account ", response.publicKey.toString());
+        console.log("wallet account ", response);
         setWalletKey(response.publicKey.toString());
       } catch (err) {
         // { code: 4001, message: 'User rejected the request.' }
@@ -149,4 +150,4 @@ function App() {
   );
 }
 
-export default App;
+export default Connect;

@@ -21,12 +21,12 @@ export const SendOneLamportToRandomAddress: FC = () => {
                 lamports: 1,
             })
         );
-
+        //    let hash =  transaction.recentBlockhash
         const signature = await sendTransaction(transaction, connection);
 
         let result = await connection.confirmTransaction(signature, 'processed');
         
-        // console.log(result);
+        //  console.log(hash);
         // setResult(result)
         if(result)
         setResult("Token Successfully Send")
